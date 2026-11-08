@@ -1,5 +1,5 @@
 layout: page
 title: "About Me"
-permalink: /isaiaaahhhhhh.github.io/about
+permalink: https://isaiaaahhhhhh.github.io/about
 
 Helo
