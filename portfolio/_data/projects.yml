@@ -1,0 +1,25 @@
+# Your projects. Each entry becomes a card on the landing page.
+# Add, remove, or reorder entries here — no HTML needed.
+#
+#   title:       Project name (required)
+#   description: One or two sentences on what it is / what you did
+#   tags:        List of tech or topics
+#   link:        Live demo or main URL (optional)
+#   repo:        Source code URL (optional)
+#   image:       Path to a screenshot, e.g. /assets/img/project.png (optional)
+
+- title: Project One
+  description: A short description of what this project does and what you built or learned.
+  tags: [JavaScript, HTML, CSS]
+  link: https://example.com
+  repo: https://github.com/isaiaaahhhhhh/project-one
+
+- title: Project Two
+  description: Another project. Mention the problem it solves or what makes it interesting.
+  tags: [Python]
+  repo: https://github.com/isaiaaahhhhhh/project-two
+
+- title: Project Three
+  description: A game, tool, or experiment — whatever you're proud of.
+  tags: [Godot, GDScript]
+  link: https://example.com
