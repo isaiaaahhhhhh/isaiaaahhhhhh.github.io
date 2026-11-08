@@ -21,7 +21,7 @@ title: Home
     display: flex;
     flex-direction: column;
   }
-  .project img { width: 100%; border-radius: 4px; margin-bottom: .8em; }
+  .project img, .project video { width: 100%; border-radius: 4px; margin-bottom: .8em; }
   .project h3 { margin: 0 0 .4em; }
   .project p { margin: 0 0 .8em; flex: 1; }
   .tags { list-style: none; padding: 0; margin: 0 0 .8em; display: flex; flex-wrap: wrap; gap: .4em; }
@@ -49,7 +49,9 @@ or working on, what kinds of things you like to build, and what you're looking f
   <div class="projects">
     {% for project in site.data.projects %}
     <article class="project">
-      {% if project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title }} screenshot">{% endif %}
+      {% if project.video %}
+      <video src="{{ project.video | relative_url }}" {% if project.image %}poster="{{ project.image | relative_url }}"{% endif %} autoplay muted loop playsinline controls preload="metadata"></video>
+      {% elsif project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title }} screenshot">{% endif %}
       <h3>{{ project.title }}</h3>
       <p>{{ project.description }}</p>
       {% if project.tags %}

@@ -7,12 +7,16 @@
 #   link:        Live demo or main URL (optional)
 #   repo:        Source code URL (optional)
 #   image:       Path to a screenshot, e.g. /assets/img/project.png (optional)
+#   video:       Path to a video, e.g. /assets/video/project.mp4 (optional).
+#                Plays muted on loop in the card; if image is also set, it's
+#                shown as the poster frame while the video loads.
 
 - title: Project One
   description: A short description of what this project does and what you built or learned.
   tags: [JavaScript, HTML, CSS]
   link: https://example.com
   repo: https://github.com/isaiaaahhhhhh/project-one
+  video: /assets/video/Crackers_10sec_PARTNERS_IN_CRIME_NOT_REALLY.mp4
 
 - title: Project Two
   description: Another project. Mention the problem it solves or what makes it interesting.
