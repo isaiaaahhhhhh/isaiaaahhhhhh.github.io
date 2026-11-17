@@ -3,6 +3,7 @@
 #
 #   title:       Project name (required)
 #   description: One or two sentences on what it is / what you did
+#   team:        Team size / your role, e.g. "Team of 5" (optional)
 #   tags:        List of tech or topics
 #   link:        Live demo or main URL (optional)
 #   repo:        Source code URL (optional)
@@ -10,18 +11,34 @@
 #   video:       Path to a video, e.g. /assets/video/project.mp4 (optional).
 #                Plays muted on loop in the card; if image is also set, it's
 #                shown as the poster frame while the video loads.
+#   youtube:     YouTube video ID to embed in the card, e.g. jFDeJiHGkOY from
+#                https://youtu.be/jFDeJiHGkOY (optional; used if no video is set)
+#   links:       Extra labeled links shown at the bottom of the card (optional):
+#                  links:
+#                    - label: Trailer
+#                      url: https://...
 
-- title: Project One
-  description: A short description of what this project does and what you built or learned.
-  tags: [JavaScript, HTML, CSS]
-  link: https://example.com
-  repo: https://github.com/isaiaaahhhhhh/project-one
+- title: Crackers
+  description: >-
+    A 2D split-screen multiplayer game built in a DigiPen in-house engine.
+    The engine had no support for multiple viewports or cameras, so I extended it
+    to render split-screen, and I built the game's full inventory system.
+  team: Team of 5
+  tags: [C++, 2D, Split-Screen Multiplayer, Custom Engine, Rendering, Gameplay Systems]
   video: /assets/video/Crackers_10sec_PARTNERS_IN_CRIME_NOT_REALLY.mp4
 
-- title: Project Two
-  description: Another project. Mention the problem it solves or what makes it interesting.
-  tags: [Python]
-  repo: https://github.com/isaiaaahhhhhh/project-two
+- title: The Last Act
+  description: >-
+    A 2D puzzle platformer where players use light and shadow to get past obstacles,
+    built on our team's custom C++ engine. As tech lead, I planned and assigned the
+    team's technical work and built the engine's architecture, its data pipeline
+    for reading and writing game data, and its C++ scripting system.
+  team: Team of 8 · Tech Lead
+  tags: [C++, Custom Engine, Engine Architecture, Data Pipeline, Scripting, 2D Puzzle Platformer]
+  youtube: jFDeJiHGkOY   # gameplay video
+  links:
+    - label: Engine & Editor Showcase
+      url: https://youtu.be/zhnHcYWrH8g
 
 - title: Project Three
   description: A game, tool, or experiment — whatever you're proud of.

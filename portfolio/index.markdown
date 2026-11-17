@@ -21,9 +21,11 @@ title: Home
     display: flex;
     flex-direction: column;
   }
-  .project img, .project video { width: 100%; border-radius: 4px; margin-bottom: .8em; }
+  .project img, .project video, .project .yt { width: 100%; border-radius: 4px; margin-bottom: .8em; }
+  .project .yt { aspect-ratio: 16 / 9; height: auto; border: 0; }
   .project h3 { margin: 0 0 .4em; }
   .project p { margin: 0 0 .8em; flex: 1; }
+  .project p.team { flex: 0; margin: -.2em 0 .6em; font-size: .85em; opacity: .7; }
   .tags { list-style: none; padding: 0; margin: 0 0 .8em; display: flex; flex-wrap: wrap; gap: .4em; }
   .tags li { font-size: .75em; padding: .15em .6em; border: 1px solid #555; border-radius: 999px; margin: 0; }
   .tags li:before { content: none; }
@@ -51,8 +53,11 @@ or working on, what kinds of things you like to build, and what you're looking f
     <article class="project">
       {% if project.video %}
       <video src="{{ project.video | relative_url }}" {% if project.image %}poster="{{ project.image | relative_url }}"{% endif %} autoplay muted loop playsinline controls preload="metadata"></video>
+      {% elsif project.youtube %}
+      <iframe class="yt" src="https://www.youtube-nocookie.com/embed/{{ project.youtube }}" title="{{ project.title }} video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
       {% elsif project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title }} screenshot">{% endif %}
       <h3>{{ project.title }}</h3>
+      {% if project.team %}<p class="team">{{ project.team }}</p>{% endif %}
       <p>{{ project.description }}</p>
       {% if project.tags %}
       <ul class="tags">
@@ -62,6 +67,7 @@ or working on, what kinds of things you like to build, and what you're looking f
       <div class="project-links">
         {% if project.link %}<a href="{{ project.link }}">Live →</a>{% endif %}
         {% if project.repo %}<a href="{{ project.repo }}">Code →</a>{% endif %}
+        {% for l in project.links %}<a href="{{ l.url }}">{{ l.label }} →</a>{% endfor %}
       </div>
     </article>
     {% endfor %}
