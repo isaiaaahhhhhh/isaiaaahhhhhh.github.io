@@ -10,7 +10,16 @@ layout: default
   .tags { list-style: none; padding: 0; margin: 0 0 1em; display: flex; flex-wrap: wrap; gap: .4em; }
   .tags li { font-size: .75em; padding: .15em .6em; border: 1px solid #555; border-radius: 999px; margin: 0; }
   .tags li:before { content: none; }
-  .cs-body h2 { border-bottom: 1px solid #333; padding-bottom: .3em; margin-top: 2em; }
+  /* Consistent vertical rhythm for case-study content */
+  .cs-body { line-height: 1.65; }
+  .cs-body h2 { border-bottom: 1px solid #333; padding-bottom: .3em; margin: 2.2em 0 .9em; }
+  .cs-body h2:first-child { margin-top: .5em; }
+  .cs-body p { margin: 0 0 1em; }
+  .cs-body ul { margin: 0 0 1em; padding-left: 1.4em; }
+  .cs-body li { margin: 0 0 .6em; }
+  .cs-body li:last-child { margin-bottom: 0; }
+  .cs-body p + ul { margin-top: -.2em; }
+  .cs-links { margin-top: 2.5em; padding-top: 1em; border-top: 1px solid #333; }
   .cs-links a { margin-right: 1em; }
 </style>
 
