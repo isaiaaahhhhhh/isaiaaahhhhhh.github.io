@@ -1,0 +1,12 @@
+{% comment %}
+  Renders a project's video, YouTube embed, or image.
+  Usage: {% include project-media.html p=project %}
+{% endcomment %}
+{% assign p = include.p %}
+{% if p.video %}
+<video src="{{ p.video | relative_url }}" {% if p.image %}poster="{{ p.image | relative_url }}"{% endif %} autoplay muted loop playsinline controls preload="metadata"></video>
+{% elsif p.youtube %}
+<iframe class="yt" src="https://www.youtube-nocookie.com/embed/{{ p.youtube }}" title="{{ p.title }} video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+{% elsif p.image %}
+<img src="{{ p.image | relative_url }}" alt="{{ p.title }} screenshot">
+{% endif %}

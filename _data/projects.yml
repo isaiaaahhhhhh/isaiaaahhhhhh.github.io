@@ -3,6 +3,10 @@
 #
 #   title:       Project name (required)
 #   description: One or two sentences on what it is / what you did
+#   case_study:  URL of the project's case-study page, e.g. /case-studies/crackers/
+#                (optional). Projects WITH this appear under "Case Studies" (aim for 3);
+#                projects without it appear under "Other Work".
+#   kind:        Label shown on case-study cards, e.g. Flagship / Constrained / Skill
 #   team:        Team size / your role, e.g. "Team of 5" (optional)
 #   tags:        List of tech or topics
 #   link:        Live demo or main URL (optional)
@@ -18,29 +22,47 @@
 #                    - label: Trailer
 #                      url: https://...
 
-- title: Crackers
+# ---------- Case studies (one flagship, one constrained, one specific skill) ----------
+
+- title: The Last Act Engine & Editor
+  kind: Flagship · Engine & Tools
+  case_study: /case-studies/the-last-act-engine/
   description: >-
-    A 2D split-screen multiplayer game built in a DigiPen in-house engine.
-    The engine had no support for multiple viewports or cameras, so I extended it
-    to render split-screen, and I built the game's full inventory system.
+    The custom C++ engine and editor our team of 8 built The Last Act on. As tech lead,
+    I planned the team's technical work and built the architecture, data pipeline,
+    and C++ scripting system.
+  team: Team of 8 · Tech Lead
+  tags: [C++, Engine Architecture, Data Pipeline, Scripting]
+  youtube: zhnHcYWrH8g   # engine & editor showcase
+
+- title: Partners in Crime (Not Really...)
+  kind: Constrained
+  case_study: /case-studies/partners-in-crime/
+  description: >-
+    A split-screen multiplayer game in an engine with no support for multiple cameras.
+    I extended the renderer to make split-screen possible and built the inventory system.
   team: Team of 5
-  tags: [C++, 2D, Split-Screen Multiplayer, Custom Engine, Rendering, Gameplay Systems]
+  tags: [C++, Rendering, Split-Screen, Gameplay Systems]
   video: /assets/video/Crackers_10sec_PARTNERS_IN_CRIME_NOT_REALLY.mp4
 
-- title: The Last Act
+- title: Acquit
+  kind: Skill · Game Design & Balancing
+  case_study: /case-studies/acquit/
   description: >-
-    A 2D puzzle platformer where players use light and shadow to get past obstacles,
-    built on our team's custom C++ engine. As tech lead, I planned and assigned the
-    team's technical work and built the engine's architecture, its data pipeline
-    for reading and writing game data, and its C++ scripting system.
-  team: Team of 8 · Tech Lead
-  tags: [C++, Custom Engine, Engine Architecture, Data Pipeline, Scripting, 2D Puzzle Platformer]
-  youtube: jFDeJiHGkOY   # gameplay video
+    A single-player card game based on the O.J. Simpson murder trial. I designed the
+    scoring mechanics and cards, then balanced them over five playtest sessions.
+  team: Team of 6
+  tags: [Card Game, Systems Design, Balancing, Playtesting]
   links:
-    - label: Engine & Editor Showcase
-      url: https://youtu.be/zhnHcYWrH8g
+    - label: Print Sheets (PDF)
+      url: /assets/pdf/Acquit.pdf
 
-- title: Project Three
-  description: A game, tool, or experiment — whatever you're proud of.
-  tags: [Godot, GDScript]
-  link: https://example.com
+# ---------- Other work (compact list) ----------
+
+- title: Conquest
+  description: >-
+    TODO: one sentence on the game and what you designed.
+  tags: [Tabletop, Game Design]
+  links:
+    - label: Print Sheets (PDF)
+      url: /assets/pdf/Conquest.pdf

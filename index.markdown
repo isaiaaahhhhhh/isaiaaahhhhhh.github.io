@@ -6,6 +6,7 @@ title: Home
 <style>
   .section { margin: 0 0 3em; }
   .section h2 { border-bottom: 1px solid #333; padding-bottom: .3em; }
+  .section .intro { opacity: .75; margin-top: -.4em; }
 
   .projects {
     display: grid;
@@ -26,10 +27,18 @@ title: Home
   .project h3 { margin: 0 0 .4em; }
   .project p { margin: 0 0 .8em; flex: 1; }
   .project p.team { flex: 0; margin: -.2em 0 .6em; font-size: .85em; opacity: .7; }
+  .kind { align-self: flex-start; font-size: .7em; text-transform: uppercase; letter-spacing: .08em; padding: .15em .6em; border: 1px solid #555; border-radius: 999px; margin-bottom: .6em; }
   .tags { list-style: none; padding: 0; margin: 0 0 .8em; display: flex; flex-wrap: wrap; gap: .4em; }
   .tags li { font-size: .75em; padding: .15em .6em; border: 1px solid #555; border-radius: 999px; margin: 0; }
   .tags li:before { content: none; }
   .project-links a { margin-right: 1em; }
+  .project-links a.primary { font-weight: bold; }
+
+  .other { list-style: none; padding: 0; margin: 1em 0 0; }
+  .other li { padding: .7em 0; border-bottom: 1px solid #2a2a2a; margin: 0; }
+  .other li:before { content: none; }
+  .other .other-desc { display: block; opacity: .75; font-size: .9em; margin: .2em 0; }
+  .other .project-links { font-size: .9em; }
 </style>
 
 <section id="about" class="section" markdown="1">
@@ -46,17 +55,18 @@ or working on, what kinds of things you like to build, and what you're looking f
 
 </section>
 
-<section id="projects" class="section">
-  <h2>Projects</h2>
+{% assign featured = site.data.projects | where_exp: "p", "p.case_study" %}
+{% assign others = site.data.projects | where_exp: "p", "p.case_study == nil" %}
+
+<section id="case-studies" class="section">
+  <h2>Case Studies</h2>
+  <p class="intro">Three projects in depth: the problem, the constraints, what failed, and what I changed.</p>
   <div class="projects">
-    {% for project in site.data.projects %}
+    {% for project in featured %}
     <article class="project">
-      {% if project.video %}
-      <video src="{{ project.video | relative_url }}" {% if project.image %}poster="{{ project.image | relative_url }}"{% endif %} autoplay muted loop playsinline controls preload="metadata"></video>
-      {% elsif project.youtube %}
-      <iframe class="yt" src="https://www.youtube-nocookie.com/embed/{{ project.youtube }}" title="{{ project.title }} video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
-      {% elsif project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title }} screenshot">{% endif %}
-      <h3>{{ project.title }}</h3>
+      {% if project.kind %}<span class="kind">{{ project.kind }}</span>{% endif %}
+      {% include project-media.html p=project %}
+      <h3><a href="{{ project.case_study | relative_url }}">{{ project.title }}</a></h3>
       {% if project.team %}<p class="team">{{ project.team }}</p>{% endif %}
       <p>{{ project.description }}</p>
       {% if project.tags %}
@@ -65,11 +75,30 @@ or working on, what kinds of things you like to build, and what you're looking f
       </ul>
       {% endif %}
       <div class="project-links">
+        <a class="primary" href="{{ project.case_study | relative_url }}">Read case study →</a>
         {% if project.link %}<a href="{{ project.link }}">Live →</a>{% endif %}
         {% if project.repo %}<a href="{{ project.repo }}">Code →</a>{% endif %}
-        {% for l in project.links %}<a href="{{ l.url }}">{{ l.label }} →</a>{% endfor %}
       </div>
     </article>
     {% endfor %}
   </div>
 </section>
+
+{% if others.size > 0 %}
+<section id="other-work" class="section">
+  <h2>Other Work</h2>
+  <ul class="other">
+    {% for project in others %}
+    <li>
+      <strong>{{ project.title }}</strong>{% if project.team %} · <span style="opacity:.7">{{ project.team }}</span>{% endif %}
+      <span class="other-desc">{{ project.description }}</span>
+      <span class="project-links">
+        {% if project.link %}<a href="{{ project.link }}">Live →</a>{% endif %}
+        {% if project.repo %}<a href="{{ project.repo }}">Code →</a>{% endif %}
+        {% for l in project.links %}<a href="{{ l.url | relative_url }}">{{ l.label }} →</a>{% endfor %}
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
