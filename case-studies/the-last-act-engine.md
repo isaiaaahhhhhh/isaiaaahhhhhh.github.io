@@ -46,8 +46,9 @@ needed to support that mechanic directly, not just draw sprites.
   put that time into the C++ scripting the team actually relied on.
 
 - **The light-and-shadow math.** The core mechanic needed shadows that were **extremely accurate**,
-  because players had to rely on exactly where a shadow fell to get through the level. Working out
-  the math behind that took the most iteration of anything in the engine.
+  because players had to rely on exactly where a shadow fell to get through the level. We worked out
+  the shadows geometrically, ray casting from the light against occluding edges, so the game could
+  test exactly what was lit and what wasn't.
 
 ## What failed
 
@@ -60,6 +61,11 @@ have avoided.
 The light-and-shadow mechanic was also **the hardest technical problem on the project**. Figuring out
 the math was difficult, and the bar was high. If a shadow was even slightly off, players couldn't
 use it reliably in gameplay.
+
+The answer was to compute shadows **geometrically, not just visually**. We cast rays from each light
+against the edges of the objects blocking it, which gave the shadows' exact shape. The shapes were
+precise enough that gameplay could test whether the player was in light or shadow. Getting that
+math right was the hardest part of the engine.
 
 ## What I changed
 
