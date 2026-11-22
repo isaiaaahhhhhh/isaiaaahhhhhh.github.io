@@ -35,13 +35,10 @@
     for reading and writing game data, and its C++ scripting system.
   team: Team of 8 · Tech Lead
   tags: [C++, Custom Engine, Engine Architecture, Data Pipeline, Scripting, 2D Puzzle Platformer]
-<<<<<<< Updated upstream
   youtube: jFDeJiHGkOY   # gameplay video
   links:
     - label: Engine & Editor Showcase
       url: https://youtu.be/zhnHcYWrH8g
-=======
->>>>>>> Stashed changes
 
 - title: Project Three
   description: A game, tool, or experiment — whatever you're proud of.
