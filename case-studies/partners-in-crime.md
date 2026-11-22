@@ -18,14 +18,19 @@ game needed a full inventory system.
 ## Constraint
 
 We had to build it in a DigiPen in-house engine that had **no support for multiple viewports or
-cameras**. Split-screen wasn't a setting we could turn on. I had to extend the engine's renderer myself.
-
-TODO: Any other limits: timeline, engine code you couldn't change, performance targets.
+cameras**, and **the engine code itself couldn't be changed**. Split-screen wasn't a setting we could
+turn on, and I couldn't add it to the renderer. It had to be built entirely on top of the engine,
+in game code.
 
 ## What I tested
 
-TODO: The approaches you tried for multi-viewport rendering, in order (e.g. render targets per player,
-viewport/scissor switching, offsetting the camera per draw), and why each one didn't work.
+My first idea was to **offset the game objects and draw the scene twice**, once for each player's
+half of the screen. In practice it kept breaking in two ways:
+
+- **The two views overlapped.** The players' "cameras" bled into each other instead of staying in
+  their own halves.
+- **The wrong data showed up in the wrong half.** Objects meant for one player's view were appearing
+  on the other player's side of the screen.
 
 ## What failed
 
@@ -35,7 +40,8 @@ little time left for anything else I wanted to contribute.
 
 ## What I changed
 
-The engine could only render one view, so I simulated two views inside it:
+The missing piece was **distance culling**. Once each player's half only drew the objects near that
+player, the overlap and wrong-side problems went away. The final approach:
 
 1. **Per-player offsets.** Each game object gets a left and a right offset. Adding the offset
    displaces the object's position so it lands where it should appear in that player's half of the screen.
@@ -44,13 +50,19 @@ The engine could only render one view, so I simulated two views inside it:
 3. **Render each half.** The remaining objects are drawn into the left or right half of the screen,
    positioned relative to that player's location.
 
-This gave the game working split-screen without needing true multi-camera support from the engine.
+This gave the game working split-screen without changing the engine or needing multi-camera support.
 
 ## What happened
 
 Split-screen shipped and works correctly. The cost was time: solving it took most of my share of the
 project.
 
-TODO: one line on what you'd do differently, e.g. prototype the riskiest feature in week one, or
-timebox it and ask for help sooner. Also confirm the inventory system: keep it in the card
-description if you built it, or remove it.
+I also built the **inventory system**, designed around two players sharing one world:
+
+- **Either player** can pick up an item.
+- The item **disappears from the world** and **appears in that player's own inventory**, never the other's.
+- The player can then **use the item correctly** from their inventory.
+
+**What I'd do differently:** at the time, I was set on solving it alone. Next time I'd **timebox** a
+risky problem like this and **ask for help sooner**. Getting there faster would have left me time
+to contribute much more to the rest of the game.

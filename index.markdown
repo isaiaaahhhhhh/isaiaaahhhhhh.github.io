@@ -45,13 +45,12 @@ title: Home
 
 ## About Me
 
-Hi, I'm Isaiah! Write a few sentences here about who you are — what you're studying
-or working on, what kinds of things you like to build, and what you're looking for
-(internships, jobs, collaborators, etc.).
+I am a Year-3 Computer Science student at DigiPen Institute of Technology Singapore.
+I am passionate about game development, both on the technical and design aspects.
 
-**Skills:** Language, Framework, Tool, Another Tool
+**Skills:** C++, Engine Architecture, Rendering, Gameplay Systems, Game Design & Balancing, Playtesting, Figma
 
-**Find me:** [GitHub](https://github.com/isaiaaahhhhhh) · [Email](mailto:you@example.com)
+**Find me:** [GitHub](https://github.com/isaiaaahhhhhh) · [Email](mailto:isaiahlowjung@gmail.com)
 
 </section>
 

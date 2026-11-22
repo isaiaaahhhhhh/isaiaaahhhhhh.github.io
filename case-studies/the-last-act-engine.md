@@ -26,13 +26,28 @@ needed to support that mechanic directly, not just draw sprites.
 
 ## Constraint
 
-TODO: e.g. no third-party engine allowed, semester timeline, teammates with mixed C++ experience,
-needing the engine usable before the game could be built on it.
+- **No third-party engine.** Everything had to be built from scratch.
+- **Strict rubrics** for both functionality and usability. The engine had to work and also be
+  usable by the rest of the team.
+- **An extremely tight timeline,** and **none of us had built a game engine before.**
+- **A hard deadline inside the deadline.** The engine had to be usable by the end of the first
+  trimester, because the game's initial prototype had to be built on it.
 
 ## What I tested
 
-TODO: How you approached the light-and-shadow mechanic (what you tried first, what you settled on),
-and early versions of the architecture, data format, or scripting system.
+- **Architecture: ECS → traditional components.** I started with an entity component system.
+  As the project took shape, I decided ECS was more than we needed: it added complexity our team and
+  timeline couldn't afford, for performance benefits a 2D game of this size wouldn't use. I switched
+  to a traditional component system that was simpler to build and easier for the team to work with.
+- **Data: JSON throughout.** Game data was read and written as JSON for the whole project, which kept
+  it human-readable and easy for the team to edit and debug.
+- **Scripting: C++ only, Lua cut.** Alongside native C++ scripting, I started building a Lua scripting
+  layer. I stopped it once I decided it wouldn't be used enough to justify the development time, and
+  put that time into the C++ scripting the team actually relied on.
+
+- **The light-and-shadow math.** The core mechanic needed shadows that were **extremely accurate**,
+  because players had to rely on exactly where a shadow fell to get through the level. Working out
+  the math behind that took the most iteration of anything in the engine.
 
 ## What failed
 
@@ -42,8 +57,9 @@ way I split tasks between people wasn't efficient. Systems didn't fit together a
 should have, and the team spent a lot of time **refactoring** code that a better plan would
 have avoided.
 
-The light-and-shadow mechanic was also a sustained struggle to implement.
-TODO: one sentence on what specifically was hard about it (collision with shadows? performance? accuracy?).
+The light-and-shadow mechanic was also **the hardest technical problem on the project**. Figuring out
+the math was difficult, and the bar was high. If a shadow was even slightly off, players couldn't
+use it reliably in gameplay.
 
 ## What I changed
 
@@ -64,5 +80,5 @@ feature and agree on exactly what's expected and how it should be implemented. F
 the physics should behave and be structured, not just "build physics." Most of our refactoring came
 from skipping that step early on.
 
-TODO (optional): add a number if you have one, such as how long the project ran or how many
-teammates used the scripting system or editor.
+The project ran for **8 months** with **8 team members**, and **all 8** of us built the game
+in the engine and its scripting system.
